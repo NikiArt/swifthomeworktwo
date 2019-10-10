@@ -7,20 +7,62 @@
 //
 
 import Foundation
+var myArray: [Int] = []
 
-func evenNum(number: Int, devider: Int) -> Bool {
-    var isEven = false
+func remDevider(number: Int, devider: Int) -> Bool {
+    var isRemainder = false
     if number % devider == 0 {
-        isEven = true
+        isRemainder = true
     }
-    return isEven
+    return isRemainder
+}
+
+func delElementOfArray(element: Int) {
+    if let index = myArray.firstIndex(of: element) {
+        myArray.remove(at: index)
+    }
+}
+
+func fibonachiNum(currentArray: inout [Int64]){
+    if currentArray.count == 0 {
+        currentArray.append(0)
+    } else if currentArray.count == 1 {
+        currentArray.append(1)
+    } else {
+        let numberOne = currentArray.last ?? 0
+        let numberTwo = currentArray[currentArray.count - 2]
+        let currentNumber = numberOne + numberTwo
+        currentArray.append(currentNumber)
+    }
+    
 }
 
 print("Введите число:")
 var currentNum: Int = Int(readLine() ?? "0") ?? 0
-print("Число \(currentNum) \(evenNum(number: currentNum, devider: 2) ? "четное" : "нечетное") ")
+print("Число \(currentNum) \(remDevider(number: currentNum, devider: 2) ? "четное" : "нечетное") ")
 
 print("Введите число:")
 currentNum = Int(readLine() ?? "0") ?? 0
-print("Число \(currentNum) \(evenNum(number: currentNum, devider: 3) ? "" : "не") делится без остатка на 3")
+print("Число \(currentNum) \(remDevider(number: currentNum, devider: 3) ? "" : "не") делится без остатка на 3")
 
+myArray.removeAll()
+for i in (1...100) {
+    myArray.append(i)
+}
+for element in myArray {
+    if !remDevider(number: element, devider: 3) {
+        delElementOfArray(element: element)
+        continue
+    }
+    if remDevider(number: element, devider: 2) {
+        delElementOfArray(element: element)
+    }
+    
+}
+print(myArray)
+
+var fibbonachiArray = [Int64]()
+for _ in (1...90) {
+    fibonachiNum(currentArray: &fibbonachiArray)
+}
+print(fibbonachiArray)
