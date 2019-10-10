@@ -37,6 +37,27 @@ func fibonachiNum(currentArray: inout [Double]){
     
 }
 
+func simpleNumbers(currentArray: inout [Int]) {
+    currentArray.append(2)
+    var i = 3
+    while true {
+        var isSimple = true
+        for j in 2 ... i - 1 {
+            if i % j == 0 {
+                isSimple = false
+                break
+            }
+        }
+        if isSimple {
+            currentArray.append(i)
+        }
+        if currentArray.count > 99 {
+            break
+        }
+        i += 1
+    }
+}
+
 print("Введите число:")
 var currentNum: Int = Int(readLine() ?? "0") ?? 0
 print("Число \(currentNum) \(remDevider(number: currentNum, devider: 2) ? "четное" : "нечетное") ")
@@ -66,3 +87,7 @@ for _ in (1...100) {
     fibonachiNum(currentArray: &fibbonachiArray)
 }
 print(fibbonachiArray)
+
+var simpleArray = [Int]()
+simpleNumbers(currentArray: &simpleArray)
+print(simpleArray)
