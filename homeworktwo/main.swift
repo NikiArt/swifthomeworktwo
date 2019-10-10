@@ -23,7 +23,7 @@ func delElementOfArray(element: Int) {
     }
 }
 
-func fibonachiNum(currentArray: inout [Int64]){
+func fibonachiNum(currentArray: inout [Double]){
     if currentArray.count == 0 {
         currentArray.append(0)
     } else if currentArray.count == 1 {
@@ -61,8 +61,8 @@ for element in myArray {
 }
 print(myArray)
 
-var fibbonachiArray = [Int64]()
-for _ in (1...90) {
+var fibbonachiArray = [Double]()
+for _ in (1...100) {
     fibonachiNum(currentArray: &fibbonachiArray)
 }
 print(fibbonachiArray)
